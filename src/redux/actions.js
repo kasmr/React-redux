@@ -4,7 +4,8 @@ import {
   SHOW_LOADER,
   HIDE_LOADER,
   SHOW_ALERT,
-  HIDE_ALERT
+  HIDE_ALERT,
+  REQUEST_POST
 } from './types';
 
 export function createPost(post) {
@@ -46,18 +47,21 @@ export function hideAlert() {
 }
 
 export function fetchPosts() {
-  return async dispatch => {
-    try {
-      dispatch(showLoading());
-      const response = await fetch(
-        'https://jsonplaceholder.typicode.com/posts?_limit=5'
-      );
-      const json = await response.json();
-      dispatch({ type: FETCH_POST, payload: json });
-      dispatch(hideLoading());
-    } catch (e) {
-      dispatch(showAlert('Что-то пошло не так...'));
-      dispatch(hideLoading());
-    }
+  return {
+    type: REQUEST_POST
   };
+  //   return async dispatch => {
+  //     try {
+  //       dispatch(showLoading());
+  //       const response = await fetch(
+  //         'https://jsonplaceholder.typicode.com/posts?_limit=5'
+  //       );
+  //       const json = await response.json();
+  //       dispatch({ type: FETCH_POST, payload: json });
+  //       dispatch(hideLoading());
+  //     } catch (e) {
+  //       dispatch(showAlert('Что-то пошло не так...'));
+  //       dispatch(hideLoading());
+  //     }
+  //   };
 }
