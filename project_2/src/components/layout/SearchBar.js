@@ -11,7 +11,7 @@ const SearchBar = ({ searchLogs }) => {
   };
 
   return (
-    <nav className='mb-4 blue darken-3'>
+    <nav className='blue darken-3' style={{ marginBottom: '5rem' }}>
       <div className='nav-wrapper'>
         <form>
           <div className='input-field'>
